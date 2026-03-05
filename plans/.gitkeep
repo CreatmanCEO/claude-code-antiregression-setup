@@ -1,0 +1,2 @@
+# This directory is used by the planner subagent to save implementation plans.
+# Plans are saved as markdown files: YYYYMMDD-feature-name.md
