@@ -1,0 +1,62 @@
+# [Project Name]
+
+## Architecture
+- **Frontend**: [React/Vue/Svelte/etc] + [TypeScript/JavaScript]
+- **Backend**: [Python 3.x], [FastAPI/Django/Flask/etc]
+- **Database**: [PostgreSQL/MongoDB/SQLite/etc]
+- **Cache**: [Redis/Memcached/none]
+- **Deploy**: [Docker on VPS / Vercel / Railway / etc]
+
+## Key Commands
+- `[command to start dev server]` — Start development
+- `[command to run tests]` — Run test suite
+- `[command to lint]` — Lint and format
+- `[command to build]` — Build for production
+
+## Project Structure
+- `[frontend/]` — Frontend application
+- `[backend/]` or `[src/]` — Backend API
+- `[tests/]` — Test files
+- `[docker-compose.yml]` — Docker setup
+
+## Code Standards
+- Python: type hints on all function signatures
+- Docstrings on all public functions
+- Prefer composition over inheritance
+- Max function length: 50 lines
+- Use async/await where possible
+- No magic numbers — use named constants
+- Error handling: explicit exceptions, no bare `except`
+
+## CRITICAL RULES — MUST FOLLOW
+- **NEVER** delete or rewrite working tests without explicit request
+- **NEVER** delete files without asking for confirmation
+- **NEVER** make multiple unrelated changes in one step
+- **ALWAYS** run tests after any code change
+- **ALWAYS** do `git add -A && git commit` checkpoint before large refactors
+- **ALWAYS** preserve backward compatibility when refactoring
+- If unsure about anything — **ASK**, don't guess
+- One task at a time. Complete and verify before moving to next
+
+## Working Style
+- Plan FIRST, code SECOND. Never start coding without a confirmed plan
+- Small diffs. One file → run tests → next file
+- After every change: run tests and show the result
+- Use subagents for codebase research (keeps main context clean)
+- When context gets large (>60%), use `/compact` with specific instructions
+
+## Agents
+During implementation, delegate tasks to specialized agents:
+- Use `planner` agent to research codebase and create implementation plans
+- Use `tester` agent to write and run tests after code changes
+- Use `code-reviewer` agent to review changes before commits
+
+## Known Patterns
+<!-- Add project-specific patterns here as you discover them -->
+<!-- Example: "API endpoints follow RESTful conventions in src/api/v1/" -->
+<!-- Example: "All database models inherit from BaseModel in src/models/base.py" -->
+
+## Gotchas
+<!-- Add known issues and workarounds here -->
+<!-- Example: "The payment module uses a legacy callback pattern — don't refactor to async" -->
+<!-- Example: "Tests require running Redis locally on port 6379" -->
