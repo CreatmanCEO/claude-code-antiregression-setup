@@ -6,6 +6,8 @@
 [![Featured on dev.to](https://img.shields.io/badge/Featured%20on-dev.to-0a0a0a)](https://dev.to/creatman/i-stopped-claude-code-from-breaking-my-projects-heres-the-exact-setup-1agi)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Opus%204.7%20%C2%B7%201M%20context-cc785c)](https://code.claude.com)
 
+🇬🇧 English · [🇷🇺 Русский](README.ru.md)
+
 **The exact CLAUDE.md + subagents + hooks setup that got me into Habr's daily top-5 (20K reads, Технотекст 8 entry). Survives Claude's 1M context window — because regressions aren't a memory problem, they're a discipline problem.**
 
 > Companion articles: [Habr (RU) — Как я перестал бояться Claude Code](https://habr.com/ru/articles/1013330/) · [dev.to (EN) — I Stopped Claude Code From Breaking My Projects](https://dev.to/creatman/i-stopped-claude-code-from-breaking-my-projects-heres-the-exact-setup-1agi)
