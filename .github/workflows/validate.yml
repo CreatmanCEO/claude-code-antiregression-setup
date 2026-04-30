@@ -1,0 +1,73 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate settings.json is well-formed JSON
+        run: |
+          python -c "import json,sys; json.load(open('.claude/settings.json'))"
+          echo "settings.json: OK"
+
+      - name: Validate every agent has a YAML frontmatter name field
+        run: |
+          set -e
+          fail=0
+          for f in .claude/agents/*.md; do
+            if ! awk '/^---$/{f++; next} f==1' "$f" | grep -qE '^name:[[:space:]]*[A-Za-z0-9_-]+'; then
+              echo "::error file=$f::missing or invalid 'name:' field in YAML frontmatter"
+              fail=1
+            fi
+            if ! awk '/^---$/{f++; next} f==1' "$f" | grep -qE '^description:'; then
+              echo "::error file=$f::missing 'description:' field in YAML frontmatter"
+              fail=1
+            fi
+            if ! awk '/^---$/{f++; next} f==1' "$f" | grep -qE '^tools:'; then
+              echo "::error file=$f::missing 'tools:' field in YAML frontmatter"
+              fail=1
+            fi
+          done
+          exit $fail
+
+      - name: Validate every rule has a globs frontmatter
+        run: |
+          set -e
+          fail=0
+          for f in .claude/rules/*.md; do
+            if ! awk '/^---$/{f++; next} f==1' "$f" | grep -qE '^globs:'; then
+              echo "::error file=$f::missing 'globs:' field in YAML frontmatter"
+              fail=1
+            fi
+          done
+          exit $fail
+
+      - name: CHANGELOG.md exists and is non-empty
+        run: |
+          test -s CHANGELOG.md || (echo "CHANGELOG.md missing or empty" && exit 1)
+
+      - name: All Markdown internal links resolve
+        run: |
+          set -e
+          fail=0
+          while IFS= read -r line; do
+            file="${line%%:*}"
+            rest="${line#*:}"
+            target=$(echo "$rest" | grep -oE '\]\([^)#]+' | sed 's/](//' | head -1)
+            [ -z "$target" ] && continue
+            case "$target" in
+              http*|mailto:*|\#*) continue ;;
+            esac
+            base="$(dirname "$file")"
+            resolved="$base/$target"
+            if [ ! -e "$resolved" ] && [ ! -e "$target" ]; then
+              echo "::warning file=$file::broken internal link → $target"
+            fi
+          done < <(grep -rEn '\]\([^)]+\)' README.md CHANGELOG.md CONTRIBUTING.md docs/*.md 2>/dev/null || true)
