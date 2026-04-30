@@ -2,6 +2,17 @@
 
 The README's hero GIF is a placeholder (`docs/screenshots/hook-blocks-commit.gif` does not yet exist). Replace it with a real recording of the commit-blocking hook in action — that single demo carries the value proposition more than the rest of the README combined.
 
+## Bootstrap a clean demo project
+
+Run [`docs/setup-demo-project.sh`](setup-demo-project.sh) — it creates `/tmp/cc-demo/` with a 5-file Python project containing one passing test, one failing test, the configs from this repo, and a one-commit `git log`. Everything is ready for recording.
+
+```bash
+bash docs/setup-demo-project.sh
+cd /tmp/cc-demo
+```
+
+The script also prints the exact prompts to feed Claude during the recording.
+
 ## What the recording must show
 
 A 6–12 second loop of:
