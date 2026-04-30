@@ -12,9 +12,9 @@
 
 > Статьи-сопровождения: [Habr (RU) — Как я перестал бояться Claude Code](https://habr.com/ru/articles/1013330/) · [dev.to (EN) — I Stopped Claude Code From Breaking My Projects](https://dev.to/creatman/i-stopped-claude-code-from-breaking-my-projects-heres-the-exact-setup-1agi)
 
-![Хук блокирует git commit при падении тестов](docs/screenshots/hook-blocks-commit.gif)
+![Хук блокирует git commit при падении тестов — pytest падает внутри PreToolUse-хука, коммит отклонён, Claude предлагает починить](docs/screenshots/hook-blocks-commit.svg)
 
-> *GIF — пока заглушка. Инструкция по записи: [docs/RECORDING-DEMO.md](docs/RECORDING-DEMO.md).*
+> Хочешь реальную запись терминала вместо отрендеренного SVG? Запусти `bash docs/setup-demo-project.sh` и следуй [docs/RECORDING-DEMO.md](docs/RECORDING-DEMO.md).
 
 ---
 

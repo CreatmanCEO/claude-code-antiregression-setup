@@ -12,9 +12,9 @@
 
 > Companion articles: [Habr (RU) — Как я перестал бояться Claude Code](https://habr.com/ru/articles/1013330/) · [dev.to (EN) — I Stopped Claude Code From Breaking My Projects](https://dev.to/creatman/i-stopped-claude-code-from-breaking-my-projects-heres-the-exact-setup-1agi)
 
-![Hook blocking a commit when tests fail](docs/screenshots/hook-blocks-commit.gif)
+![Hook blocking a commit when tests fail — pytest fails inside PreToolUse hook, commit refused, Claude offers to fix](docs/screenshots/hook-blocks-commit.svg)
 
-> *Replace this GIF with your own recording. See [docs/RECORDING-DEMO.md](docs/RECORDING-DEMO.md) for asciinema/OBS instructions.*
+> Want a real terminal recording instead of this rendered SVG? Run `bash docs/setup-demo-project.sh` and follow [docs/RECORDING-DEMO.md](docs/RECORDING-DEMO.md).
 
 ---
 
